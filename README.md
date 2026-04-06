@@ -1,6 +1,6 @@
 # LLM/RL Training Coding Exercises
 
-102 coding exercises for learning RL-based LLM training concepts, inspired by the [slime](https://github.com/example/slime) codebase and general LLM training patterns.
+117 coding exercises (1184 tests) for learning RL-based LLM training concepts, inspired by the [slime](https://github.com/example/slime) codebase and general LLM training patterns.
 
 ## Structure
 
@@ -30,11 +30,14 @@ Each exercise has 3 files:
 | 15 | **Evaluation & Benchmarks** - Perplexity, ECE, majority voting, exact match, MCQA | 7 | PyTorch/numpy | Easy-Medium |
 | 16 | **MoE & Routing** - Top-k routing, load balancing, expert dispatch, routing replay | 7 | PyTorch/numpy | Easy-Hard |
 | 17 | **Training Loop Patterns** - LR scheduler, DPO loss, EMA, SFT step, curriculum learning | 8 | PyTorch/numpy | Easy-Hard |
+| 18 | **RLHF & Alignment** - Bradley-Terry RM, RLOO, IPO, KTO, win-rate/ELO | 5 | PyTorch/numpy | Medium-Hard |
+| 19 | **Optimizers & Tokenization** - AdamW internals, BPE, ZeRO sharding, special tokens, constrained decoding | 5 | PyTorch/numpy | Easy-Hard |
+| 20 | **Inference & Serving** - PagedAttention, INT8 quantization, ALiBi, cross-attention, multi-token prediction | 5 | PyTorch | Medium-Hard |
 
 ## Getting Started
 
 ```bash
-# Run all solution tests (1005 tests)
+# Run all solution tests (1184 tests)
 python -m pytest exercises/ -v
 
 # Work on an exercise
@@ -189,3 +192,24 @@ Categories 01-07 use numpy only. Categories 08-17 require PyTorch (CPU is suffic
 6. **Curriculum Scheduler** (Medium) - Difficulty-based data ordering
 7. **Training State Manager** (Medium) - Checkpointing with early stopping
 8. **Online vs Offline RL** (Medium) - Data flow simulation and staleness
+
+### 18 - RLHF & Alignment (PyTorch + numpy)
+1. **Bradley-Terry Reward Model** (Hard) - Pairwise ranking loss for reward model training
+2. **RLOO Advantages** (Medium) - REINFORCE Leave-One-Out variance reduction
+3. **IPO Loss** (Medium) - Identity Preference Optimization squared-loss variant
+4. **KTO Loss** (Medium) - Kahneman-Tversky Optimization with unpaired feedback
+5. **Win-Rate & ELO** (Medium) - Pairwise comparison metrics and rating systems
+
+### 19 - Optimizers & Tokenization (PyTorch + numpy)
+1. **AdamW Optimizer** (Medium) - First/second moment, bias correction, decoupled weight decay
+2. **BPE Tokenizer** (Medium) - Byte-Pair Encoding training, encoding, and decoding
+3. **ZeRO Optimizer Sharding** (Hard) - Stage 1/2/3 optimizer state partitioning
+4. **Special Token Handler** (Easy) - BOS/EOS/PAD management and batch padding
+5. **Constrained Decoding** (Medium) - FSM-based structured output generation
+
+### 20 - Inference & Serving (PyTorch)
+1. **Paged Attention** (Hard) - Block-based KV cache with allocation/free
+2. **INT8 Quantization** (Medium) - Symmetric/asymmetric per-channel quantization
+3. **ALiBi Attention** (Medium) - Attention with Linear Biases for position encoding
+4. **Cross-Attention** (Medium) - Encoder-decoder cross-attention mechanism
+5. **Multi-Token Prediction** (Medium) - N-ahead prediction heads from single hidden state
