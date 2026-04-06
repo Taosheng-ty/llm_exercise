@@ -2,7 +2,9 @@
 
 ## Project overview
 
-27 coding exercises for learning RL-based LLM training, inspired by the slime codebase. Each exercise lives in its own directory with `problem.py` (stubs), `solution.py` (reference), and `test_solution.py` (pytest tests).
+102 coding exercises (1005 tests) for learning RL-based LLM training, inspired by the slime codebase and general LLM training patterns. Each exercise lives in its own directory with `problem.py` (stubs), `solution.py` (reference), and `test_solution.py` (pytest tests).
+
+Categories 01-07 use numpy only. Categories 08-17 require PyTorch (CPU-only is fine).
 
 ## Test runner
 
@@ -45,4 +47,5 @@ When creating new exercises, use Pattern A. It does not require `__init__.py` fi
 
 ## Dependencies
 
-Only `numpy` and `pytest` — no torch or GPU required.
+- `numpy` and `pytest` — required for all exercises
+- `torch` (PyTorch) — required for categories 08-17 (CPU is sufficient, no GPU needed)

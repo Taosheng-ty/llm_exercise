@@ -1,0 +1,89 @@
+"""
+Exercise 05: Importance Sampling Ratios
+========================================
+
+Implement importance sampling ratio computation and truncated importance
+sampling (TIS) for off-policy correction in PPO-style training.
+
+Given:
+- old_log_probs: (batch, seq_len) log-probs from behavior/rollout policy
+- new_log_probs: (batch, seq_len) log-probs from current training policy
+- loss_mask:     (batch, seq_len) binary mask for valid tokens
+
+Compute:
+1. Per-token importance sampling ratio: ratio = exp(new_log_prob - old_log_prob)
+2. Per-sequence ratio: product (or geometric mean) of token-level ratios
+3. Truncated (clipped) ratio for stability: clamp(ratio, clip_low, clip_high)
+4. Clip fraction: fraction of tokens where clipping was applied
+
+Reference: slime/backends/megatron_utils/loss.py :: vanilla_tis_function()
+"""
+
+import torch
+
+
+def compute_token_is_ratio(
+    new_log_probs: torch.Tensor,
+    old_log_probs: torch.Tensor,
+) -> torch.Tensor:
+    """Compute per-token importance sampling ratio.
+
+    Args:
+        new_log_probs: (batch, seq_len) current policy log-probs.
+        old_log_probs: (batch, seq_len) rollout policy log-probs.
+
+    Returns:
+        ratio: (batch, seq_len) per-token IS ratios.
+    """
+    # TODO: ratio = exp(new - old)
+    raise NotImplementedError("Implement compute_token_is_ratio")
+
+
+def compute_sequence_is_ratio(
+    new_log_probs: torch.Tensor,
+    old_log_probs: torch.Tensor,
+    loss_mask: torch.Tensor,
+) -> torch.Tensor:
+    """Compute per-sequence importance sampling ratio.
+
+    The sequence-level ratio is the product of per-token ratios, computed
+    as exp(sum of log-ratio) over valid tokens.
+
+    Args:
+        new_log_probs: (batch, seq_len) current policy log-probs.
+        old_log_probs: (batch, seq_len) rollout policy log-probs.
+        loss_mask:     (batch, seq_len) binary mask.
+
+    Returns:
+        seq_ratio: (batch,) per-sequence IS ratios.
+    """
+    # TODO: exp(sum((new - old) * mask, dim=-1))
+    raise NotImplementedError("Implement compute_sequence_is_ratio")
+
+
+def truncated_importance_sampling(
+    new_log_probs: torch.Tensor,
+    old_log_probs: torch.Tensor,
+    loss_mask: torch.Tensor,
+    clip_low: float = 0.2,
+    clip_high: float = 5.0,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """Compute truncated importance sampling weights.
+
+    Args:
+        new_log_probs: (batch, seq_len) current policy log-probs.
+        old_log_probs: (batch, seq_len) rollout policy log-probs.
+        loss_mask:     (batch, seq_len) binary mask.
+        clip_low:      lower clip bound for ratio.
+        clip_high:     upper clip bound for ratio.
+
+    Returns:
+        tis_weights:  (batch, seq_len) clipped per-token IS ratios.
+        clip_frac:    scalar, fraction of valid tokens that were clipped.
+        raw_ratio:    (batch, seq_len) unclipped ratios (for logging).
+    """
+    # TODO: Implement TIS
+    # Hint 1: Compute raw token-level ratios
+    # Hint 2: Clip to [clip_low, clip_high]
+    # Hint 3: Compute clip fraction
+    raise NotImplementedError("Implement truncated_importance_sampling")
