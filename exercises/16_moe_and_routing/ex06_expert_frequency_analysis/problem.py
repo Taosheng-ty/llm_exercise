@@ -5,6 +5,12 @@ Analyze expert utilization patterns in an MoE model. Given a record of routing
 decisions (which experts were selected for each token), compute key metrics
 that help diagnose MoE training health.
 
+Monitoring expert utilization during MoE LLM training is essential for detecting
+training pathologies. Dead experts (rarely or never activated) waste parameters
+and indicate routing collapse, while heavily skewed utilization means the model
+isn't leveraging its full capacity. These diagnostics guide training
+interventions like load balancing adjustments.
+
 Reference: MoE monitoring in slime training pipelines, where expert utilization
 is tracked to detect training pathologies like expert collapse.
 

@@ -1,6 +1,11 @@
 """
 Exercise 03: Map Weight Names Between Frameworks (Medium, numpy)
 
+Different LLM frameworks (Megatron-LM, HuggingFace, vLLM) use different naming
+conventions for the same weights. Correct name mapping is critical when moving
+models between training and serving infrastructure — an incorrect mapping
+silently loads wrong weights, producing a broken model.
+
 When converting checkpoints between Megatron-LM and HuggingFace, weight names
 must be translated. Each framework uses different naming conventions.
 

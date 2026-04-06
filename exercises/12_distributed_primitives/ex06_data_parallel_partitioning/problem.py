@@ -4,6 +4,11 @@ Exercise 06: Data Parallel Partitioning (Easy, numpy)
 Partition a dataset across data-parallel ranks. In distributed data-parallel
 training, each GPU (rank) processes a different subset of the data.
 
+Data parallelism is the most common form of distributed LLM training -- each
+GPU processes different batches of data with identical model copies. How data is
+partitioned across ranks affects load balance and communication patterns,
+directly impacting training throughput.
+
 Reference: slime _split_train_data_by_dp() which supports both round-robin
 and balanced-by-length partitioning.
 

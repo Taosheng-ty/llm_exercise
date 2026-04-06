@@ -3,6 +3,11 @@ Exercise 03: Flash Attention via Tiling
 Difficulty: Hard
 
 Implement a simplified flash attention using tiling to reduce memory usage.
+Flash attention is a critical optimization for LLM training -- standard
+attention has O(n^2) memory in sequence length, which limits context windows
+and batch sizes. By computing attention in tiles without materializing the
+full attention matrix, flash attention enables training with longer sequences
+and larger batches on the same GPU memory.
 
 Instead of materializing the full N x N attention matrix, process Q and K/V
 in blocks. Use the online softmax trick to maintain numerical stability:

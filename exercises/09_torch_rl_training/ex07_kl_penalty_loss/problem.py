@@ -5,6 +5,11 @@ Exercise 07: KL Divergence Penalty Loss
 Implement approximate KL divergence computation and add it as a penalty
 to the policy loss, supporting multiple KL estimator types.
 
+The KL penalty is a cornerstone of RLHF — it prevents the policy from drifting too far
+from the pretrained reference model during RL fine-tuning. Without this constraint, the
+model may "reward hack" by generating degenerate but high-reward outputs that lose the
+general language capabilities learned during pretraining.
+
 Given:
 - policy_log_probs: (batch, seq_len) log-probs from current policy
 - ref_log_probs:    (batch, seq_len) log-probs from reference policy

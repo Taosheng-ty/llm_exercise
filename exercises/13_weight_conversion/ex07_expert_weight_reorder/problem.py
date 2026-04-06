@@ -1,7 +1,13 @@
 """
 Exercise 07: Reorder MoE Expert Weights (Medium, numpy)
 
-In Mixture-of-Experts (MoE) models, experts are indexed 0..N-1. After training,
+In Mixture-of-Experts LLMs (like Mixtral, DeepSeek-MoE), routing frequency
+determines which experts are most heavily used. Reordering experts by frequency
+improves cache locality during inference and helps identify "dead" experts that
+may indicate training issues — useful for both serving optimization and training
+diagnostics.
+
+In MoE models, experts are indexed 0..N-1. After training,
 we may want to reorder experts by their usage frequency (routing score) so that
 the most-used experts have lower indices (useful for capacity planning and
 load balancing).

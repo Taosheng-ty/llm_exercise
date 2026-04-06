@@ -4,6 +4,12 @@ Exercise 01: All-Reduce Simulation (Medium, PyTorch)
 Simulate the all-reduce collective operation across N virtual workers
 using only single-process PyTorch (no actual distributed runtime needed).
 
+All-reduce is the backbone of distributed LLM training -- after each backward
+pass, gradients computed on different GPUs must be aggregated (summed or
+averaged) so every replica applies the same update. Without efficient
+all-reduce, distributed training of billion-parameter models would be
+impossible.
+
 In real distributed training, all-reduce aggregates tensors across all workers
 so that every worker ends up with the same reduced result. Here we simulate
 this by representing each worker's tensor as an element in a Python list.

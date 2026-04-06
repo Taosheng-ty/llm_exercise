@@ -1,6 +1,11 @@
 """
 Exercise 04: Convert Model Weights Between dtypes (Easy-Medium, PyTorch)
 
+LLMs are typically trained in bf16/fp16 for speed but may need conversion to
+other dtypes for deployment (fp32 for CPU inference, int8/fp8 for quantized
+serving). Understanding precision tradeoffs is critical — wrong dtype choices
+can silently degrade model quality or waste memory.
+
 When deploying models, we often need to convert weights to lower precision
 for memory and speed. Common conversions:
   - fp32 -> bf16  (training default to inference)

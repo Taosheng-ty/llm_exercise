@@ -2,7 +2,10 @@
 
 Repetition penalty discourages the model from generating tokens that have
 already appeared in the context. This is commonly used to reduce repetitive
-outputs in open-ended generation.
+outputs in open-ended generation. Repetition is one of the most visible failure modes
+in LLM generation — models can get stuck in loops, repeating phrases or sentences.
+This penalty is applied during inference to discourage the model from regenerating
+tokens it has already produced, improving output quality without requiring retraining.
 
 The penalty is applied asymmetrically:
 - For tokens in the context with POSITIVE logits: logit = logit / penalty

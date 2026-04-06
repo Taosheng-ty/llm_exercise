@@ -4,6 +4,11 @@ Exercise 03: Clipped Value Function Loss
 
 Implement the PPO-style clipped value function loss used for critic training.
 
+In PPO-based LLM training, the value function (critic) estimates expected reward for
+each token position, providing the baseline that reduces variance in policy gradient
+estimates. Clipping the value loss prevents the critic from making overly large updates
+that would destabilize advantage estimation.
+
 Given:
 - values:     (batch, seq_len) current value predictions (requires grad)
 - old_values: (batch, seq_len) value predictions from the rollout policy

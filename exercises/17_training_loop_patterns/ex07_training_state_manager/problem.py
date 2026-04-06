@@ -6,7 +6,12 @@ Framework: numpy
 
 Background:
     During training, we need to track state for checkpointing, logging,
-    and early stopping. The state manager tracks:
+    and early stopping. LLM training runs last days to weeks on expensive GPU
+    clusters — losing progress due to a crash is extremely costly. A robust
+    training state manager that handles checkpointing, resumption, and early
+    stopping is critical infrastructure. In RL-based LLM training, this also
+    includes saving optimizer states, replay buffers, and curriculum progress.
+    The state manager tracks:
     - current_step, current_epoch
     - best_metric and which step achieved it
     - lr_history and loss_history

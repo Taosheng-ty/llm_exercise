@@ -6,6 +6,13 @@ paged memory, analogous to virtual memory in operating systems. Instead of alloc
 one contiguous buffer per sequence, memory is divided into fixed-size blocks that can
 be allocated on demand and shared across sequences.
 
+Paged attention is what makes high-throughput LLM serving possible. Without it, each
+sequence requires a contiguous memory allocation for its KV cache, leading to severe
+memory fragmentation and waste. By managing KV cache memory in pages (like an OS
+manages RAM), systems like vLLM can serve 2-4x more concurrent requests on the same
+GPU — critical for RL rollout generation where thousands of sequences are decoded in
+parallel.
+
 This exercise implements a simplified paged KV cache:
 
 Key concepts:

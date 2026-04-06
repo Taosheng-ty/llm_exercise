@@ -5,6 +5,12 @@ Simulate the token dispatch mechanism used in expert parallelism for MoE models.
 In real distributed training, tokens are scattered to the GPU holding each expert,
 processed, and gathered back. Here we simulate this on a single device.
 
+In distributed MoE LLM training, experts live on different GPUs. Token dispatch
+determines which tokens are sent to which GPU for processing, and gather collects
+results back. Efficient dispatch is critical for training throughput — poor
+implementation creates communication bottlenecks that negate MoE's computational
+savings.
+
 Your task:
     Implement `expert_dispatch(hidden_states, routing_weights, routing_indices,
                                expert_ffns, num_experts)` that:

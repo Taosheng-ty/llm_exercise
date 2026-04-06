@@ -2,7 +2,11 @@
 Exercise 01: Scaled Dot-Product Attention
 Difficulty: Medium
 
-Implement scaled dot-product attention from scratch.
+Implement scaled dot-product attention from scratch. Scaled dot-product
+attention is the core computation inside every transformer-based LLM.
+Understanding it is essential for grasping how models like GPT, LLaMA, and
+Qwen process and relate tokens across a sequence during both training and
+inference.
 
 Given Q, K, V tensors of shape (batch, heads, seq_len, head_dim):
   1. Compute attention scores: score = Q @ K^T / sqrt(d_k)

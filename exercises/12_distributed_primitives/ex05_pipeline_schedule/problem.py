@@ -5,6 +5,11 @@ Simulate the GPipe pipeline parallel schedule. In pipeline parallelism, the
 model is split into stages across GPUs. Micro-batches flow through stages
 in a pipeline fashion.
 
+Pipeline parallelism splits transformer layers across GPUs, enabling training
+of models too deep for a single device. The scheduling strategy determines how
+much GPU time is wasted in "pipeline bubbles" -- a critical efficiency concern
+when training LLMs across dozens of GPUs.
+
 GPipe schedule:
 - All forward passes are completed first (stage 0 processes mb0 first,
   then when stage 0 starts mb1, stage 1 can start mb0, etc.).

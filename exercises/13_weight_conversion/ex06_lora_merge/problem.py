@@ -1,6 +1,12 @@
 """
 Exercise 06: Merge LoRA Weights into Base Model (Medium, PyTorch)
 
+LoRA is the dominant technique for efficiently fine-tuning LLMs — instead of
+updating all parameters, only small low-rank adapters are trained. Merging LoRA
+weights back into the base model is needed for deployment (eliminating runtime
+overhead), while unmerging enables switching between different fine-tuned
+variants.
+
 LoRA (Low-Rank Adaptation) adds trainable low-rank matrices to frozen base weights:
   W_merged = W_base + (alpha / r) * B @ A
 

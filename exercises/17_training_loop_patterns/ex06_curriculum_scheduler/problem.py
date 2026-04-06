@@ -6,7 +6,12 @@ Framework: numpy
 
 Background:
     Curriculum learning presents training data in order of increasing
-    difficulty, which can improve convergence. Common strategies:
+    difficulty, which can improve convergence. In LLM training, this means
+    starting with easier examples (shorter sequences, simpler tasks) and
+    progressively introducing harder ones — improving both training efficiency
+    and final model quality. For RL-based training, it means starting with
+    tasks where the model can achieve some reward before tackling harder
+    problems. Common strategies:
 
     1. Linear curriculum: difficulty threshold increases linearly with step
     2. Exponential curriculum: difficulty threshold increases exponentially

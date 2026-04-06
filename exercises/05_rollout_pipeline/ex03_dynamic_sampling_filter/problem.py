@@ -4,6 +4,11 @@ Exercise 03: Dynamic Sampling Filters
 Implement dynamic sampling filters that decide whether to keep or drop
 a group of samples (same prompt, different responses) during rollout.
 
+During RL-based LLM training, not all generated rollouts are equally useful for
+learning. Dynamic filters remove low-quality samples (e.g., responses that are
+too short, too repetitive, or have near-zero reward variance), improving the
+signal-to-noise ratio of the training data and reducing wasted compute.
+
 Inspired by slime's filter_hub/ (slime/rollout/filter_hub/), which uses
 DynamicFilterOutput(keep, reason) and provides filters like
 check_reward_nonzero_std.

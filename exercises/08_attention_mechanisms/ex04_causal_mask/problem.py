@@ -2,7 +2,11 @@
 Exercise 04: Causal Mask
 Difficulty: Easy
 
-Generate and apply causal (autoregressive) attention masks.
+Generate and apply causal (autoregressive) attention masks. The causal mask
+enforces the autoregressive property that is fundamental to decoder-only LLMs
+(GPT, LLaMA, etc.): each token can only attend to previous tokens, preventing
+the model from "cheating" by looking at future tokens during training. This is
+what makes left-to-right language modeling possible.
 
 Implement two functions:
 

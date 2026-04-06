@@ -4,6 +4,12 @@ Exercise 4: Exact Match Metric
 Exact Match (EM) is a core evaluation metric for QA tasks. The predicted answer
 must exactly match one of the acceptable ground truth answers after normalization.
 
+In LLM benchmarks like GSM8K, TriviaQA, and SQuAD, exact match serves as the
+primary success criterion — and in RL training, it doubles as a binary reward signal
+(the model either got the answer right or wrong). Proper text normalization is
+essential to ensure that semantically equivalent answers aren't penalized due to
+superficial formatting differences.
+
 Normalization typically includes:
 - Lowercasing
 - Stripping whitespace

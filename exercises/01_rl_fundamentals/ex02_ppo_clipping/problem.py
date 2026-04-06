@@ -5,7 +5,10 @@ Difficulty: Medium
 
 Background:
     PPO prevents destructively large policy updates by clipping the probability
-    ratio between new and old policies. The clipped surrogate objective is:
+    ratio between new and old policies. In RLHF training of LLMs, this clipping
+    is essential — without it, a single bad gradient step could cause the model to
+    diverge from coherent language generation and destroy the pretrained model's
+    capabilities. The clipped surrogate objective is:
 
         ratio = exp(log_probs_new - log_probs_old)
         unclipped = ratio * advantages

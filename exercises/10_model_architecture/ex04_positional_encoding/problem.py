@@ -4,7 +4,11 @@ Exercise 04: Sinusoidal Positional Encoding
 Difficulty: Easy
 
 The original Transformer (Vaswani et al., 2017) uses sinusoidal positional encodings
-to inject position information into token embeddings.
+to inject position information into token embeddings. Positional encoding gives
+transformer LLMs the ability to understand token order — without it, "the cat sat on
+the mat" and "the mat sat on the cat" would be indistinguishable. While modern LLMs
+have moved to RoPE, understanding sinusoidal encoding is foundational for grasping how
+position information flows through the model.
 
 Formula:
     PE(pos, 2i)   = sin(pos / 10000^(2i / d_model))

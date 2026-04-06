@@ -2,7 +2,10 @@
 
 Temperature scaling is the simplest sampling control in LLM decoding.
 Given raw logits from a language model, temperature controls the "sharpness"
-of the probability distribution:
+of the probability distribution. Temperature is one of the most important knobs in
+LLM inference and RL rollout generation. Lower temperatures produce more deterministic
+outputs (useful for evaluation), while higher temperatures increase diversity (useful
+for exploration during RL training, where diverse rollouts improve learning).
 
     scaled_logits = logits / temperature
 

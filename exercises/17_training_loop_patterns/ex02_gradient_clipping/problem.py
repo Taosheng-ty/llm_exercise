@@ -7,6 +7,10 @@ Framework: PyTorch
 Background:
     Gradient clipping prevents exploding gradients during training by scaling
     down all gradients when the global gradient norm exceeds a threshold.
+    This is essential for stable LLM training — large language models are prone
+    to occasional gradient spikes (especially during RL fine-tuning) that can
+    cause loss divergence and corrupt the model. Clipping by global norm is the
+    standard approach used in virtually all LLM training frameworks.
 
     The algorithm:
     1. Compute global gradient norm: sqrt(sum of squared norms of all param grads)

@@ -2,7 +2,11 @@
 Exercise 06: Grouped Query Attention (GQA)
 Difficulty: Medium
 
-Implement GQA where K,V have fewer heads than Q.
+Implement GQA where K,V have fewer heads than Q. GQA (used in LLaMA 2/3,
+Mistral) reduces the number of KV heads while keeping full query heads,
+dramatically cutting KV cache memory during inference without sacrificing
+quality. This is essential for serving LLMs efficiently, especially during RL
+rollout generation where many sequences are decoded in parallel.
 
 K,V heads are shared across groups of query heads.
 - num_q_heads must be divisible by num_kv_heads

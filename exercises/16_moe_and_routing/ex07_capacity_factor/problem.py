@@ -10,6 +10,12 @@ number of tokens each expert can process:
 where total_assignments = num_tokens * top_k (each token creates top_k
 assignments). When top_k=1, total_assignments == num_tokens.
 
+The capacity factor prevents any single expert from being overwhelmed during MoE
+LLM training. Without capacity limits, popular experts receive far more tokens
+than they can process efficiently, causing memory spikes and load imbalance
+across GPUs. Dropped tokens are a controlled tradeoff for stable, efficient
+distributed training.
+
 Tokens that exceed an expert's capacity are "dropped" (their output is zero).
 
 Your task:

@@ -3,7 +3,11 @@ Exercise 05: Rotary Positional Embedding (RoPE)
 Difficulty: Hard
 
 Implement RoPE which encodes position information by rotating pairs of
-dimensions in Q and K vectors.
+dimensions in Q and K vectors. RoPE is the position encoding used by most
+modern LLMs (LLaMA, Qwen, Mistral). Unlike absolute positional embeddings,
+RoPE encodes relative positions through rotation, enabling better length
+generalization -- models can handle sequences longer than those seen during
+training.
 
 Implement two functions:
 

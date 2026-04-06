@@ -1,6 +1,11 @@
 """
 Exercise 01: Split Fused QKV Weight into Separate Q, K, V (Medium, PyTorch)
 
+When loading LLM checkpoints across frameworks (e.g., converting Megatron to
+HuggingFace for serving, or vice versa for training), QKV weight format must be
+converted correctly. Getting the split wrong silently produces garbage attention
+outputs — a common source of bugs when deploying or fine-tuning LLMs.
+
 In Megatron-LM, the query, key, and value projections are fused into a single
 linear_qkv weight for efficiency. When converting to HuggingFace format, we need
 to split this back into separate q_proj, k_proj, and v_proj weights.

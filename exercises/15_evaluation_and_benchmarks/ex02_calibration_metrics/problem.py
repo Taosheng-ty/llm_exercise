@@ -5,6 +5,12 @@ A well-calibrated model's predicted confidence should match its actual accuracy.
 For example, among all predictions where the model says "I'm 80% confident,"
 it should be correct ~80% of the time.
 
+Calibration is critical for safe LLM deployment — a well-calibrated model that says
+"I'm 90% sure" should be correct roughly 90% of the time. Poor calibration leads to
+overconfident wrong answers, which is especially dangerous in high-stakes applications
+like medical or legal advice. Measuring and improving calibration is an active area
+of research in both supervised fine-tuning and RLHF pipelines.
+
 Expected Calibration Error (ECE) bins predictions by confidence and measures
 the gap between average confidence and accuracy in each bin:
 

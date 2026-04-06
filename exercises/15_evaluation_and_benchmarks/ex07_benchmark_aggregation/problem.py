@@ -5,6 +5,12 @@ After evaluating a model on multiple benchmark tasks, results must be aggregated
 into summary statistics. This includes macro/weighted averages, per-category
 breakdowns, and confidence intervals via bootstrap resampling.
 
+When comparing LLMs across dozens of benchmarks, a single aggregate score is needed
+for model selection and comparison. The choice of aggregation method (macro average
+vs. weighted) and confidence estimation (bootstrap CI) directly affects which model
+gets chosen for deployment or further RL training — making these seemingly simple
+statistics surprisingly consequential.
+
 Your task: implement macro_average(), weighted_average(),
 category_averages(), and bootstrap_confidence_interval().
 

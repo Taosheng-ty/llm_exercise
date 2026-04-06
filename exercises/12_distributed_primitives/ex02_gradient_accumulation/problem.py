@@ -5,6 +5,12 @@ Implement gradient accumulation over micro-batches. In distributed training,
 when the effective batch size is too large for GPU memory, we split it into
 micro-batches and accumulate gradients before calling optimizer.step().
 
+LLM training requires large effective batch sizes for stable convergence, but
+single-GPU memory can't hold large batches of long sequences. Gradient
+accumulation simulates larger batches by accumulating gradients over multiple
+micro-batches before updating, enabling effective batch sizes of thousands of
+sequences on limited hardware.
+
 Implement the following function:
 
     train_with_gradient_accumulation(

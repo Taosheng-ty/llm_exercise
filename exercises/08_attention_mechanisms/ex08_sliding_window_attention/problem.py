@@ -3,7 +3,11 @@ Exercise 08: Sliding Window Attention
 Difficulty: Medium
 
 Implement sliding window attention where each token only attends
-to the previous `window_size` tokens (including itself).
+to the previous `window_size` tokens (including itself). Sliding window
+attention (used in Mistral, Llama 2) limits each token to attending only
+within a local window, reducing attention computation from O(n^2) to O(n*w).
+This enables training and serving LLMs on much longer sequences -- critical
+for applications like long-document summarization and multi-turn RL dialogues.
 
 Implement two functions:
 

@@ -2,7 +2,11 @@
 Exercise 02: Multi-Head Attention
 Difficulty: Medium
 
-Implement multi-head attention as a PyTorch module.
+Implement multi-head attention as a PyTorch module. Multi-head attention
+allows LLMs to attend to different representation subspaces simultaneously
+-- e.g., one head may track syntax while another tracks semantics. This
+parallelism is what gives transformer LLMs their expressive power for
+language understanding and generation.
 
 The module should:
   1. Project input x into Q, K, V using linear layers

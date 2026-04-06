@@ -2,7 +2,10 @@
 
 Beam search maintains multiple candidate sequences (beams) at each decoding
 step, expanding each beam with all possible next tokens and keeping only the
-top beam_width candidates overall.
+top beam_width candidates overall. Beam search finds higher-probability sequences than
+greedy decoding by exploring multiple candidates in parallel. It is widely used in LLM
+applications like translation and summarization where output quality matters more than
+diversity, and is the standard decoding method for non-creative generation tasks.
 
 Implement `beam_search(log_prob_fn, beam_width, max_length, eos_token_id, length_penalty)`:
 

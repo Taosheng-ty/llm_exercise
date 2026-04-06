@@ -4,6 +4,10 @@ Exercise 01: Rollout Data Source with Epoch Tracking
 Implement a data source that serves batches from a dataset, automatically
 tracking epochs and reshuffling when the data is exhausted.
 
+In RL-based LLM training (e.g., RLHF/GRPO), the data source feeds prompts to
+the rollout pipeline for generating responses. Epoch tracking ensures every
+prompt is seen, and reproducible shuffling enables fair training across runs.
+
 This is inspired by slime's RolloutDataSource (slime/rollout/data_source.py),
 which maintains sample_offset, epoch_id, and reshuffles on epoch boundaries.
 

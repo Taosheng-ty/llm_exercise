@@ -7,6 +7,12 @@ support per-dataset overrides with a resolution hierarchy:
 
     dataset-specific -> default -> global fallback
 
+LLM evaluation involves running many benchmarks (MMLU, GSM8K, HumanEval, etc.)
+each requiring different few-shot counts, temperatures, stop tokens, and other
+settings. A config system that supports sensible defaults with per-dataset overrides
+is essential for managing this complexity — without it, evaluation suites become
+brittle and hard to maintain as the number of benchmarks grows.
+
 Reference: slime/utils/eval_config.py EvalDatasetConfig and
 build_eval_dataset_configs().
 

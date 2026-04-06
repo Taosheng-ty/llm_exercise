@@ -4,6 +4,11 @@ Exercise 04: Tensor Parallel Linear Layer (Hard, PyTorch)
 Simulate tensor parallelism for a linear layer. In Megatron-LM style tensor
 parallelism, a single linear layer's weight is split across multiple GPUs.
 
+Tensor parallelism (Megatron-LM style) splits individual weight matrices across
+GPUs, enabling single layers that are too large for one GPU's memory. This is
+essential for training and serving large LLMs -- a 70B parameter model's
+attention layers alone can exceed single-GPU memory.
+
 There are two flavors:
 
 1. Column Parallel: Weight W (out_features x in_features) is split along the

@@ -6,6 +6,11 @@ When the buffer is full, the oldest samples are evicted (FIFO).
 Supports uniform random sampling and optional priority-based sampling
 where higher-reward samples are more likely to be drawn.
 
+In RL-based LLM training, replay buffers store past rollouts (prompt-response
+pairs with rewards) so the policy can learn from diverse experiences rather than
+only the most recent batch. This breaks temporal correlation and improves sample
+efficiency, which is critical when each rollout requires expensive LLM inference.
+
 Inspired by slime's RolloutDataSourceWithBuffer
 (slime/rollout/data_source.py) which maintains an internal buffer and
 supports custom buffer_filter functions.

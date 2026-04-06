@@ -2,7 +2,10 @@
 
 Top-p sampling (also called nucleus sampling) dynamically selects the smallest
 set of tokens whose cumulative probability exceeds p. This adapts the number
-of candidate tokens based on the shape of the distribution.
+of candidate tokens based on the shape of the distribution. Top-p adapts the cutoff
+dynamically based on the model's confidence — when the model is certain, fewer tokens
+are kept; when uncertain, more options remain. This makes it preferable to fixed top-k
+for LLM serving and is the default sampling strategy in most production LLM APIs.
 
 Algorithm:
 1. Sort logits in descending order

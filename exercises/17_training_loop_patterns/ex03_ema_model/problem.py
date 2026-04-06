@@ -6,8 +6,11 @@ Framework: PyTorch
 
 Background:
     EMA maintains a smoothed copy of model weights that often generalizes
-    better than the raw trained weights. After each training step, EMA
-    parameters are updated:
+    better than the raw trained weights. In LLM training, the EMA model is
+    used to maintain a smoothed version of the weights for evaluation — it
+    often performs better than the instantaneous checkpoint because it averages
+    out the noise from stochastic gradient updates, providing a more stable
+    model for deployment. After each training step, EMA parameters are updated:
 
         ema_param = decay * ema_param + (1 - decay) * model_param
 

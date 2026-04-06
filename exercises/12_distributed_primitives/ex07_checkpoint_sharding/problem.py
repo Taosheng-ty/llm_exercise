@@ -4,6 +4,11 @@ Exercise 07: Checkpoint Sharding (Medium, numpy)
 Shard and reconstruct a model state dict, similar to how HuggingFace
 safetensors shards model weights across multiple files.
 
+LLM checkpoints can be tens to hundreds of gigabytes -- far too large for a
+single file or a single machine's memory. Sharding checkpoints across multiple
+files enables saving and loading in distributed training, and is used by systems
+like DeepSpeed, FSDP, and Megatron-LM.
+
 When a model is too large for a single file, its state dict is split across
 multiple shard files with an index file that maps tensor names to their
 shard file.

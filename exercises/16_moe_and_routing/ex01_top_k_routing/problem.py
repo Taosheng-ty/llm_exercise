@@ -5,6 +5,12 @@ Implement the core routing mechanism used in Mixture of Experts (MoE) models.
 Given hidden states and a router weight matrix, compute which experts each token
 should be sent to and what weight each expert receives.
 
+Top-k routing is the core mechanism in Mixture-of-Experts LLMs (Mixtral,
+DeepSeek-MoE) that enables scaling model parameters without proportionally
+scaling compute. Each token is processed by only k of N experts, allowing models
+with hundreds of billions of parameters to run at the cost of a much smaller
+dense model.
+
 Inspired by MoE routing in slime's Megatron backend for models like Qwen3-MoE
 and DeepSeek-V3.
 

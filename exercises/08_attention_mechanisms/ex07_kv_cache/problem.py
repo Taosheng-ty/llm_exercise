@@ -3,7 +3,11 @@ Exercise 07: KV Cache for Autoregressive Decoding
 Difficulty: Medium
 
 Implement a KV cache that stores past key and value tensors for efficient
-autoregressive decoding.
+autoregressive decoding. The KV cache is what makes autoregressive LLM
+inference practical. Without caching, generating each new token would require
+recomputing attention over all previous tokens, making inference O(n^2) per
+token. With KV caching, each step only computes attention for the new token,
+which is critical for both interactive serving and RL rollout generation.
 
 Class KVCache:
     __init__(self, max_seq_len, num_heads, head_dim)

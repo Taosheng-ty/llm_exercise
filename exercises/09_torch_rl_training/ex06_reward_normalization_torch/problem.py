@@ -5,6 +5,11 @@ Exercise 06: Reward Normalization with Running Statistics
 Implement a reward normalizer that maintains running mean and variance
 using exponential moving average (EMA) and normalizes incoming rewards.
 
+In RL-based LLM training, reward signals come from diverse sources (outcome rewards,
+format bonuses, length penalties) with very different scales. Normalizing rewards
+prevents any single signal from dominating training and ensures stable gradient
+magnitudes across different tasks and prompts.
+
 Given a stream of reward batches, the normalizer should:
 1. Maintain running_mean and running_var via EMA
 2. Normalize: (rewards - running_mean) / sqrt(running_var + eps)

@@ -4,6 +4,11 @@ Exercise 01: PPO Clipped Policy Gradient Loss in PyTorch
 
 Implement the PPO clipped surrogate objective as a differentiable PyTorch function.
 
+In RLHF/PPO training of LLMs, the policy gradient loss drives the model to increase
+probability of tokens in high-reward responses while decreasing probability of tokens
+in low-reward responses. The clipping mechanism prevents destructive updates that could
+collapse the model's language capabilities.
+
 Given:
 - old_log_probs: (batch, seq_len) log-probs under the old policy
 - new_log_probs: (batch, seq_len) log-probs under the current policy (requires grad)

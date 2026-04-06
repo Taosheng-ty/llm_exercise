@@ -5,7 +5,10 @@ Difficulty: Medium
 
 Background:
     In Proximal Policy Optimization (PPO), Generalized Advantage Estimation (GAE)
-    is used to compute advantage estimates that balance bias and variance.
+    is used to compute advantage estimates that balance bias and variance. GAE is
+    critical in RLHF/PPO training of LLMs — it provides low-variance advantage
+    estimates that stabilize policy gradient updates when fine-tuning language
+    models with reward signals.
 
     The key idea:
     1. Compute TD residuals: delta_t = r_t + gamma * V(t+1) - V(t)

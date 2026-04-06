@@ -1,6 +1,11 @@
 """
 Exercise 05: Verify Tensor Integrity with Hashing (Easy, numpy)
 
+When distributing LLM checkpoints across machines or converting between formats,
+silent data corruption can occur. Hash verification ensures checkpoint integrity
+— catching bit flips, incomplete downloads, or conversion bugs before they cause
+mysterious training failures or degraded inference quality.
+
 When saving and loading checkpoints, we need to verify that tensor data has not
 been corrupted. A simple approach is to compute a hash of the tensor data and
 compare before/after.

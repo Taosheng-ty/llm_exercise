@@ -4,6 +4,11 @@ Exercise 02: Generalized Advantage Estimation (GAE) in PyTorch
 
 Implement vectorized GAE using PyTorch tensors (not numpy).
 
+In RLHF training, GAE computes per-token advantages that tell the policy which tokens
+in a response contributed to high rewards. The lambda parameter controls the
+bias-variance tradeoff — critical for stable LLM fine-tuning where noisy gradient
+estimates can quickly degrade generation quality.
+
 Given:
 - rewards: (batch, seq_len) per-token rewards
 - values:  (batch, seq_len) value estimates V(s_t)

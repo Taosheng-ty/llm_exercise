@@ -2,7 +2,13 @@
 Exercise 03: Compression-Based Repetition Detection
 
 In LLM outputs, repetitive text is a common failure mode (e.g., the model
-generates the same phrase over and over). We can detect this using:
+generates the same phrase over and over). In RL-based LLM training, repetition
+is a common degenerate behavior where the model learns to maximize length-based
+rewards by repeating tokens. Detecting repetition during training enables
+automatic filtering of degenerate rollouts and can be used as a penalty signal
+in the reward function.
+
+We can detect this using:
 
 1. Compression ratio: highly repetitive text compresses very well (high ratio).
    ratio = len(original) / len(compressed)

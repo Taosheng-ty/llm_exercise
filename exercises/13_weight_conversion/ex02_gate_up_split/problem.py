@@ -1,6 +1,11 @@
 """
 Exercise 02: Split Fused Gate-Up Projection (Easy, PyTorch)
 
+Modern LLMs (LLaMA, Mistral, Qwen) use SwiGLU FFNs where the gate and up
+projections are often fused into a single matrix for training efficiency.
+Splitting them correctly is essential when converting checkpoints between
+training frameworks and inference engines.
+
 In Megatron-LM (and many MoE implementations), the gate and up projections of
 the SwiGLU MLP are fused into a single linear_fc1 weight for efficiency:
 

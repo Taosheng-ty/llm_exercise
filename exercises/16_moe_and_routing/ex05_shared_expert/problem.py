@@ -9,8 +9,11 @@ In this architecture, each token is processed through:
 The final output combines both:
     output = shared_expert(x) + sum_k(routing_weight_k * expert_k(x))
 
-This ensures that common knowledge is captured by the shared expert while
-specialized knowledge is delegated to routed experts.
+The shared expert architecture (used in DeepSeek-MoE) ensures that common
+knowledge is handled by a dedicated expert available to all tokens, while routed
+experts specialize in domain-specific patterns. This improves training stability
+and prevents the "capacity waste" problem where multiple routed experts learn
+redundant representations.
 
 Reference: Qwen3-MoE shared expert pattern in slime's model configurations.
 

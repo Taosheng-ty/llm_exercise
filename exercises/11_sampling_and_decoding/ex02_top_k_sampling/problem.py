@@ -2,7 +2,10 @@
 
 Top-k sampling restricts the candidate tokens to the k most probable ones.
 All other tokens have their logits set to -inf so they receive zero probability
-after softmax.
+after softmax. In LLM text generation, the full vocabulary distribution often has a
+long tail of implausible tokens. Top-k sampling truncates this tail to prevent the
+model from occasionally generating nonsensical tokens, improving output quality during
+both serving and RL rollout generation.
 
 Implement `top_k_filter(logits, k)` that:
 1. For each row in the batch, find the k-th largest logit value

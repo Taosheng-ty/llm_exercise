@@ -5,6 +5,11 @@ In code generation evaluation (e.g., HumanEval, MBPP), we generate multiple
 candidate solutions per problem and want to estimate the probability that at
 least one of k randomly chosen samples is correct. This is the pass@k metric.
 
+In RL-based LLM training for code generation, pass@k serves as both an
+evaluation metric and a reward signal. It measures whether any of k sampled
+solutions passes the test cases, providing the training signal that drives
+policy improvement.
+
 Formula:
     pass@k = 1 - C(n-c, k) / C(n, k)
 

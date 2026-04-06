@@ -7,6 +7,11 @@ where Q, K, V all come from the same sequence, in cross-attention:
   - Queries come from the decoder hidden states
   - Keys and Values come from the encoder output
 
+Cross-attention enables encoder-decoder LLMs to condition generation on an encoded
+input — essential for tasks like translation, summarization, and speech-to-text.
+Understanding cross-attention is also important for multimodal LLMs where visual
+encoders cross-attend with text decoders.
+
 Key differences from self-attention:
 - No causal mask on the encoder side (decoder can attend to all encoder positions)
 - The encoder and decoder sequences can have different lengths

@@ -4,6 +4,12 @@ Exercise 1: Compute Perplexity of a Language Model
 Perplexity (PPL) is a standard metric for evaluating language models. It measures
 how "surprised" a model is by the data. Lower perplexity means better predictions.
 
+Perplexity is the go-to metric for evaluating LLM quality — it quantifies how well
+a model predicts held-out text by measuring the average negative log-likelihood per
+token. It's used throughout LLM development to compare model sizes, training recipes,
+and fine-tuning approaches, making it one of the first numbers reported in any
+language modeling paper.
+
     PPL = exp( -1/N * sum(log_probs[i] * mask[i]) )
 
 where N = sum(mask) is the number of valid (non-padding) tokens.

@@ -1,7 +1,11 @@
 """Exercise 08: Stop Criteria for Generation (Easy) — NumPy
 
 During text generation, we need to know when to stop. Multiple stop criteria
-can be combined, and generation halts when ANY criterion is triggered.
+can be combined, and generation halts when ANY criterion is triggered. Stop criteria
+control when an LLM stops generating tokens — essential for both serving (respecting
+context limits, stopping at end-of-turn markers) and RL training (defining episode
+boundaries). In RL rollout pipelines, proper stop detection determines response length
+and affects reward computation.
 
 Implement the following classes using numpy:
 
