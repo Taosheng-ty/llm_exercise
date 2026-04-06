@@ -27,6 +27,8 @@ def load_balancing_loss(
     num_experts: int,
 ) -> torch.Tensor:
     """
+    Compute the auxiliary load balancing loss for MoE routing.
+
     Args:
         router_logits: (num_tokens, num_experts) - raw logits from the router
         routing_indices: (num_tokens, top_k) - indices of selected experts per token
@@ -34,5 +36,17 @@ def load_balancing_loss(
 
     Returns:
         loss: scalar tensor - the load balancing loss
+
+    How to compute f_i and P_i:
+        f_i (expert load fraction): Count how many times expert i appears in
+            routing_indices (across all tokens and all top_k slots), then divide
+            by total number of assignments (num_tokens * top_k).
+            Hint: use one_hot on routing_indices, sum over tokens and top_k dim.
+
+        P_i (mean router probability for expert i): Apply softmax to router_logits
+            to get per-token probabilities, then take the mean across all tokens
+            for each expert.
+
+        loss = num_experts * sum(f * P)  (dot product of f and P vectors)
     """
     raise NotImplementedError("Implement load balancing loss")

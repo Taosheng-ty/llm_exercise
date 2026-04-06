@@ -20,8 +20,14 @@ import torch.nn.functional as F
 import math
 
 
-# You may copy/reimplement these from previous exercises
+# You may copy/reimplement these from previous exercises (ex01, ex02, ex03).
+# See those exercises for detailed specs. Brief reminders below.
+
+
 class RMSNorm(nn.Module):
+    """RMSNorm(x) = x / sqrt(mean(x^2) + eps) * weight.
+    self.weight = nn.Parameter(ones(dim)), self.eps = eps."""
+
     def __init__(self, dim, eps=1e-6):
         super().__init__()
         raise NotImplementedError
@@ -31,6 +37,11 @@ class RMSNorm(nn.Module):
 
 
 class CausalSelfAttention(nn.Module):
+    """Multi-head causal self-attention.
+    Q, K, V projections (nn.Linear, no bias) -> split heads -> scaled dot-product
+    with causal mask (upper triangle = -inf) -> concat -> output projection.
+    Attrs: self.q_proj, self.k_proj, self.v_proj, self.o_proj, self.n_heads, self.head_dim."""
+
     def __init__(self, dim, n_heads):
         super().__init__()
         raise NotImplementedError
@@ -40,6 +51,9 @@ class CausalSelfAttention(nn.Module):
 
 
 class SwiGLUFFN(nn.Module):
+    """output = down_proj(silu(gate_proj(x)) * up_proj(x)).
+    Three nn.Linear (no bias): gate_proj, up_proj (dim->hidden_dim), down_proj (hidden_dim->dim)."""
+
     def __init__(self, dim, hidden_dim):
         super().__init__()
         raise NotImplementedError
@@ -49,6 +63,9 @@ class SwiGLUFFN(nn.Module):
 
 
 class TransformerBlock(nn.Module):
+    """Pre-norm decoder block: x = x + attn(norm1(x)); x = x + ffn(norm2(x)).
+    Attrs: self.attention_norm, self.attention, self.ffn_norm, self.ffn."""
+
     def __init__(self, dim, n_heads, ffn_hidden_dim):
         super().__init__()
         raise NotImplementedError

@@ -24,14 +24,21 @@ import torch.nn as nn
 
 
 class RMSNorm(nn.Module):
-    """RMSNorm -- you may copy from ex01 or reimplement."""
+    """RMSNorm -- you may copy from ex01 or reimplement.
+
+    RMSNorm(x) = x / sqrt(mean(x^2) + eps) * weight
+
+    Create self.weight as nn.Parameter of ones(dim), store self.eps.
+    """
 
     def __init__(self, dim: int, eps: float = 1e-6):
+        """Store eps, create self.weight = nn.Parameter(torch.ones(dim))."""
         super().__init__()
         # TODO
         raise NotImplementedError
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Normalize x using RMS and scale by self.weight."""
         # TODO
         raise NotImplementedError
 
