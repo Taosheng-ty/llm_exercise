@@ -47,7 +47,8 @@ class CausalSelfAttention(nn.Module):
         super().__init__()
         # TODO:
         # 1. Store n_heads, head_dim = dim // n_heads
-        # 2. Create Q, K, V, and output projections (nn.Linear, no bias)
+        # 2. Create projections (nn.Linear, no bias) named:
+        #    self.q_proj, self.k_proj, self.v_proj, self.o_proj
         raise NotImplementedError
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

@@ -27,6 +27,10 @@ Returns:
 
 Key requirements:
     1. Scale each micro-batch loss by 1/accumulation_steps before .backward().
+       Note: when using mean-reduction losses like nn.MSELoss() (default reduction='mean'),
+       each micro-batch loss is already averaged over the micro-batch samples. Dividing
+       by accumulation_steps makes the accumulated gradient match a single large-batch
+       gradient (mean-of-means).
     2. Call optimizer.step() and optimizer.zero_grad() every accumulation_steps batches.
     3. If the total number of batches is not divisible by accumulation_steps,
        perform a final step with the remaining accumulated gradients.

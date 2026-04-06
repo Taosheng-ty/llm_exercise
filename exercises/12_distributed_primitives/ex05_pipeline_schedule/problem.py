@@ -8,7 +8,11 @@ in a pipeline fashion.
 GPipe schedule:
 - All forward passes are completed first (stage 0 processes mb0 first,
   then when stage 0 starts mb1, stage 1 can start mb0, etc.).
-- Then all backward passes run in reverse order.
+- Then all backward passes run in reverse order: backward passes proceed
+  from the last stage to the first, and within each stage the microbatches
+  are processed in reverse order (last microbatch first). Specifically,
+  the backward pass mirrors the forward pass -- the last forward event
+  to finish is the first to start its backward pass.
 - Each forward/backward step takes 1 time unit.
 
 Implement the following functions:

@@ -1,5 +1,5 @@
 """
-Exercise 05: FLOPs Counter (Medium)
+Exercise 05: FLOPs Counter (Easy-Medium)
 
 Counting floating point operations (FLOPs) is essential for:
 - Estimating training time
@@ -11,6 +11,9 @@ Standard conventions:
 - Attention QK^T with causal mask: 2*H*S*S*D / 2 (half due to causal mask)
 - A*V: H*S*S*D (no factor of 2 for single matmul with causal)
 - Training FLOPs ~= 3x forward FLOPs (forward + backward, where backward ~ 2x forward)
+
+Note: All formulas are given explicitly below -- the main task is translating
+them to code and composing them correctly.
 
 Reference: slime/utils/flops_utils.py
 

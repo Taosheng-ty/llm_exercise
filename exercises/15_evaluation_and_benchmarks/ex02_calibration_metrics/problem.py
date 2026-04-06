@@ -48,6 +48,8 @@ def compute_ece(
            and the predicted class (argmax).
         2. Compare predicted class to true_labels to get correctness (0/1).
         3. Bin samples by confidence into n_bins equal-width bins over [0, 1].
+           Bin boundaries: bin_i covers (i/n_bins, (i+1)/n_bins].
+           The first bin also includes the left boundary 0.0 (i.e., [0, 1/n_bins]).
         4. For each bin, compute average confidence, average accuracy, and gap.
         5. ECE is the weighted sum of gaps: sum(count_b / N * gap_b).
     """

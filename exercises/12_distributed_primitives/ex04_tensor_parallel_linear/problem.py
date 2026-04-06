@@ -31,10 +31,17 @@ Implement two functions:
     ) -> torch.Tensor
 
 Both should:
-    1. Split the weight (and bias for column parallel) into num_shards pieces.
+    1. Split the weight (and bias where applicable) into num_shards pieces.
     2. Simulate each shard computing its portion.
     3. Combine results (all-gather for column, all-reduce for row).
     4. Return the same result as a standard nn.Linear with the given weight/bias.
+
+Bias handling:
+    - Column parallel: bias is split along the output dimension (each shard gets
+      its slice of the bias), then concatenated after all-gather.
+    - Row parallel: bias is NOT split. Each shard computes a partial output
+      (without bias), the partial outputs are summed (all-reduce), and then
+      the full bias is added once to the combined result.
 
 Args:
     input: Tensor of shape (batch_size, in_features).

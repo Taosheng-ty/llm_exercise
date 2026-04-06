@@ -40,6 +40,7 @@ class EMAModel:
         """
         self.decay = decay
         # TODO: Store a deep copy of model parameters as EMA shadow params
+        # The attribute MUST be named `self.shadow_params` (tests access it directly).
         # Hint: Use list(model.parameters()) and .clone().detach() each one
         raise NotImplementedError("Implement EMAModel.__init__")
 

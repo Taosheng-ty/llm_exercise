@@ -23,6 +23,10 @@ import torch
 class RewardNormalizer:
     """Normalizes rewards using running mean and variance with EMA.
 
+    EMA update formula:
+        running_mean = (1 - momentum) * running_mean + momentum * batch_mean
+        running_var  = (1 - momentum) * running_var  + momentum * batch_var
+
     Args:
         momentum: EMA momentum (higher = more weight on new data).
         eps: small constant for numerical stability.

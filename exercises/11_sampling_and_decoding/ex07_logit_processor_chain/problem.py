@@ -25,6 +25,9 @@ Implement the following classes using numpy:
    - __call__ applies each processor in sequence
    - Maintains the chain as a list of processors
 
+Important: processors must NOT mutate the input logits array in-place.
+Each processor should work on a copy so the caller's original array is unchanged.
+
 Args for __call__:
     input_ids: np.ndarray of shape (seq_len,) — previously generated token IDs
     logits: np.ndarray of shape (vocab_size,) — raw logits for next token

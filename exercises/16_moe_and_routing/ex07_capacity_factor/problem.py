@@ -5,7 +5,10 @@ In MoE models, some experts may receive far more tokens than others, causing
 memory and compute imbalance. The capacity factor mechanism limits the maximum
 number of tokens each expert can process:
 
-    max_tokens_per_expert = capacity_factor * (total_tokens / num_experts)
+    max_tokens_per_expert = capacity_factor * (total_assignments / num_experts)
+
+where total_assignments = num_tokens * top_k (each token creates top_k
+assignments). When top_k=1, total_assignments == num_tokens.
 
 Tokens that exceed an expert's capacity are "dropped" (their output is zero).
 

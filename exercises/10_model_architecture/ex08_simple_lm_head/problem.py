@@ -71,8 +71,8 @@ class SimpleLM(nn.Module):
         """
         super().__init__()
         # TODO:
-        # 1. Token embedding: nn.Embedding(vocab_size, dim)
-        # 2. Stack of n_layers TransformerBlocks
+        # 1. Token embedding: self.tok_emb = nn.Embedding(vocab_size, dim)
+        # 2. Stack of n_layers TransformerBlocks (self.layers or self.blocks)
         # 3. Final RMSNorm
         # 4. LM head: nn.Linear(dim, vocab_size, bias=False)
         raise NotImplementedError("Implement __init__")

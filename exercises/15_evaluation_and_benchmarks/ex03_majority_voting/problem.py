@@ -11,7 +11,7 @@ per prompt and aggregating results.
 Your task: implement majority_vote(), weighted_majority_vote(), and
 compute_agreement_rate().
 
-Difficulty: Medium
+Difficulty: Easy-Medium
 Framework: PyTorch
 """
 

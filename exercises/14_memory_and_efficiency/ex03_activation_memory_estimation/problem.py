@@ -34,6 +34,8 @@ Your tasks:
 
 5. Implement `measure_actual_activation_memory(model, input_tensor)`:
    - Use forward hooks to measure actual tensor sizes stored during forward pass.
+   - Hook non-container (leaf) submodules only (modules with no children).
+   - Count the OUTPUT tensors of each hooked module (not inputs).
    - Return total bytes measured.
 """
 

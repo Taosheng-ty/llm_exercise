@@ -26,10 +26,10 @@ def extract_answer_letter(
     """Extract the answer letter from a free-form model response.
 
     Try these regex patterns in order on the text AFTER any </think> tag:
-    1. r"(?:answer|option|choice)\\s*(?:is|:)?\\s*([A-Z])" (case insensitive)
-    2. r"([A-Z])\\s*(?:is\\s*(?:the)?\\s*correct)" (case insensitive)
-    3. r"final\\s*(?:answer|option)\\s*(?:is|:)?\\s*([A-Z])" (case insensitive)
-    4. Fallback: last standalone uppercase letter (\\b[A-Z]\\b) in the text
+    1. r"(?:answer|option|choice)\s*(?:is|:)?\s*([A-Z])" (case insensitive)
+    2. r"([A-Z])\s*(?:is\s*(?:the)?\s*correct)" (case insensitive)
+    3. r"final\s*(?:answer|option)\s*(?:is|:)?\s*([A-Z])" (case insensitive)
+    4. Fallback: last standalone uppercase letter (\b[A-Z]\b) in the text
 
     For each match, check if the letter is in valid_letters (uppercased).
     If valid_letters is None, default to A-J.

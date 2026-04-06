@@ -21,7 +21,10 @@ Steps:
 1. Group-normalize advantages: for each prompt, compute mean and std of rewards
    across the G responses, then advantage_g = (reward_g - mean) / (std + eps)
 2. Broadcast per-response advantage to all tokens of that response
-3. Compute PPO-clipped policy loss using (old_log_probs - new_log_probs) as ppo_kl
+3. Compute PPO-clipped policy loss: let log_ratio = new_log_probs - old_log_probs,
+   ratio = exp(log_ratio), then clip ratio and compute the standard PPO objective.
+   (Note: the variable "ppo_kl" in some references is the negative log-ratio
+   old_log_probs - new_log_probs, not an actual KL divergence.)
 4. Add KL penalty term: kl_coef * mean_kl(policy || ref)
 5. Return total loss (must be differentiable)
 
@@ -84,7 +87,7 @@ def compute_grpo_loss(
     # TODO: Implement GRPO loss
     # Step 1: Compute group-normalized advantages
     # Step 2: For each response, broadcast advantage to all tokens
-    # Step 3: Compute PPO-clipped loss (ppo_kl = old_log_probs - new_log_probs)
+    # Step 3: Compute PPO-clipped loss (ratio = exp(new_log_probs - old_log_probs))
     # Step 4: Compute KL penalty (policy vs reference, k3 estimator)
     # Step 5: Combine: loss = pg_loss + kl_coef * kl_loss
     raise NotImplementedError("Implement compute_grpo_loss")

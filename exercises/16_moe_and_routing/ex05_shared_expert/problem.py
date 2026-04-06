@@ -16,6 +16,11 @@ Reference: Qwen3-MoE shared expert pattern in slime's model configurations.
 
 Your task:
     Implement `SharedMoELayer` with a forward method.
+
+    Required attribute names (accessed by tests):
+    - self.router: nn.Linear router layer (dim -> num_routed_experts)
+    - self.shared_expert: the shared expert module (always-active)
+    - self.routed_experts: nn.ModuleList of routed expert modules
 """
 
 import torch

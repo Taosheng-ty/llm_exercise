@@ -12,7 +12,10 @@ Class KVCache:
         - Appends to cache and returns full cached k, v
         - If cache exceeds max_seq_len, evict oldest tokens (rolling window)
     reset(self)
-        - Clear the cache
+        - Clear the cache and reset self.seq_len to 0
+
+The cache must expose a `seq_len` attribute (int) tracking the current number
+of cached tokens (0 after init or reset).
 
 Also implement:
     incremental_attention(Q, K, V, kv_cache)

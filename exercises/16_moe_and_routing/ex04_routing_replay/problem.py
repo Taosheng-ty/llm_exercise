@@ -18,6 +18,11 @@ Your task:
     - clear(): Reset all state
     - clear_forward(): Reset only the forward replay index
 
+    Required internal attributes (accessed by tests):
+    - top_indices_list: list of recorded routing decision tensors
+    - forward_index: int, current index for forward replay
+    - backward_index: int, current index for backward replay
+
     Also implement compute_topk_with_replay(scores, topk, cache, stage) that:
     - "record": Computes real top-k, records to cache, returns (probs, indices)
     - "replay_forward": Replays indices from cache, gathers probs from scores

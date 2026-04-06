@@ -109,10 +109,18 @@ class AsyncScheduler:
         """Simulate num_steps of async training.
 
         The async pattern (matching train_async.py):
-        - Generation for step 0 starts before training
+        - Generation for step 0 starts before training (at policy_version=0)
         - At each step, train on the last completed generation
-        - New generation starts after weight update (every update_interval steps)
+        - New generation starts after weight update (every update_interval steps),
+          i.e., when (step + 1) % update_interval == 0, a new generation is
+          triggered using the current policy_version (after increment)
         - Data generated at policy version V is used until next refresh
+
+        Example trace (update_interval=2, num_steps=4):
+          step 0: train on data from v0, policy_version becomes 1
+          step 1: train on data from v0, policy_version becomes 2, trigger refresh -> data_gen_version=2
+          step 2: train on data from v2, policy_version becomes 3
+          step 3: train on data from v2, policy_version becomes 4, trigger refresh -> data_gen_version=4
 
         Returns:
             Same format as OnlineScheduler.run

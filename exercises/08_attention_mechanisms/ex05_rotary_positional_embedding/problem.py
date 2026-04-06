@@ -11,6 +11,10 @@ Implement two functions:
    - Compute the sinusoidal frequency matrix
    - For dimension pair i, freq = 1 / (base^(2i/head_dim))
    - Returns cos and sin tensors of shape (max_seq_len, head_dim)
+   - Note: each dimension pair shares the same frequency, so the returned
+     tensors have repeated values: cos[:, 2i] == cos[:, 2i+1] and likewise
+     for sin. (i.e., expand from half_dim to head_dim by repeating each
+     frequency value for both dimensions in the pair.)
 
 2. apply_rope(x, cos, sin)
    - x: (batch, heads, seq_len, head_dim)

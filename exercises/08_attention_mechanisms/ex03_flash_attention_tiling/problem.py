@@ -7,7 +7,14 @@ Implement a simplified flash attention using tiling to reduce memory usage.
 Instead of materializing the full N x N attention matrix, process Q and K/V
 in blocks. Use the online softmax trick to maintain numerical stability:
   - Track running max (m) and sum (l) across blocks
-  - Rescale accumulated output when the max changes
+  - Rescale accumulated output when the max changes:
+      When processing a new block with local max m_new:
+        m_combined = max(m_old, m_new)
+        l_old_rescaled = l_old * exp(m_old - m_combined)
+        l_new = sum(exp(scores - m_combined))   [for the new block]
+        O = (O * l_old_rescaled + exp(scores - m_combined) @ V_block) / (l_old_rescaled + l_new)
+        l = l_old_rescaled + l_new
+        m = m_combined
 
 Args:
     Q: (batch, heads, seq_len, head_dim)

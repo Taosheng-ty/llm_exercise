@@ -11,6 +11,20 @@ The fused QKV weight is stored in an interleaved layout per query group:
     - 1 row of K
     - 1 row of V
 
+Visual example (num_q_heads=4, num_kv_heads=2, head_dim=D, group_size=2):
+
+  Fused QKV layout in memory (output dimension):
+  +-------+-------+-------+-------+-------+-------+-------+-------+
+  |  Q0   |  Q1   |  K0   |  V0   |  Q2   |  Q3   |  K1   |  V1   |
+  | (D)   | (D)   | (D)   | (D)   | (D)   | (D)   | (D)   | (D)   |
+  +-------+-------+-------+-------+-------+-------+-------+-------+
+  |<--- KV group 0 ------------->|  |<--- KV group 1 ------------->|
+
+  After split:
+    Q = [Q0, Q1, Q2, Q3]  shape: (4*D, hidden_dim)
+    K = [K0, K1]           shape: (2*D, hidden_dim)
+    V = [V0, V1]           shape: (2*D, hidden_dim)
+
 So the fused weight shape is:
   ((num_q_heads + 2 * num_kv_heads) * head_dim, hidden_dim)
 

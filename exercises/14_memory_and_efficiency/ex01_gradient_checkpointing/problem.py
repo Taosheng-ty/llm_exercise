@@ -23,6 +23,8 @@ Your tasks:
        * Save only the input_tensor and the functions in ctx (NOT intermediate activations).
        * Return the final output.
    - `backward(ctx, grad_output)`:
+       * IMPORTANT: Wrap recomputation in `torch.enable_grad()` context, because
+         autograd is disabled by default inside custom autograd backward functions.
        * Recompute forward pass from saved input to get intermediates.
        * Compute gradients by backpropagating through recomputed graph.
        * Return grad w.r.t. input_tensor (and None for each function).
@@ -70,6 +72,9 @@ class ManualCheckpointFunction(torch.autograd.Function):
         """
         Recompute forward from saved input, then backprop through the
         recomputed graph to get gradients.
+
+        Note: You must use torch.enable_grad() as a context manager here,
+        because PyTorch disables autograd inside custom backward functions.
         """
         raise NotImplementedError("Implement ManualCheckpointFunction.backward")
 

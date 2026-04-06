@@ -1,5 +1,5 @@
 """
-Exercise 04: Convert Model Weights Between dtypes (Easy, PyTorch)
+Exercise 04: Convert Model Weights Between dtypes (Easy-Medium, PyTorch)
 
 When deploying models, we often need to convert weights to lower precision
 for memory and speed. Common conversions:

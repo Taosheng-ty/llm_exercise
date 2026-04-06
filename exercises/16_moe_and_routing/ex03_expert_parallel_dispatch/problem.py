@@ -1,5 +1,5 @@
 """
-Exercise 03: Expert Parallel Token Dispatch (Hard, PyTorch)
+Exercise 03: Expert Parallel Token Dispatch (Medium, PyTorch)
 
 Simulate the token dispatch mechanism used in expert parallelism for MoE models.
 In real distributed training, tokens are scattered to the GPU holding each expert,
