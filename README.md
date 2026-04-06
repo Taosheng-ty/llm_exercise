@@ -34,6 +34,50 @@ Each exercise has 3 files:
 | 19 | **Optimizers & Tokenization** - AdamW internals, BPE, ZeRO sharding, special tokens, constrained decoding | 5 | PyTorch/numpy | Easy-Hard |
 | 20 | **Inference & Serving** - PagedAttention, INT8 quantization, ALiBi, cross-attention, multi-token prediction | 5 | PyTorch | Medium-Hard |
 
+## Recommended Learning Path
+
+The categories are numbered by topic, not by recommended order. Follow this path for the best learning progression — each phase builds on the previous one.
+
+### Phase 1: RL & Loss Foundations (numpy only)
+> Core RL algorithms and loss functions that underpin LLM training.
+
+1. **Cat 01** — RL Fundamentals (GAE, PPO, KL, GRPO, REINFORCE)
+2. **Cat 07** — Loss & Masking (cross-entropy, log probs, OPSM, dual-clip PPO)
+3. **Cat 02** — Reward Functions (math normalization, F1, reward shaping)
+4. **Cat 03** — Data Processing (chat templates, packing, loss masks)
+
+### Phase 2: Model Internals (PyTorch)
+> Understand the transformer architecture from the ground up.
+
+5. **Cat 08** — Attention Mechanisms (start with ex01→ex04→ex02→ex05→ex06→ex07→ex03→ex08)
+6. **Cat 10** — Model Architecture (RMSNorm → SwiGLU → transformer block → LM head)
+7. **Cat 11** — Sampling & Decoding (temperature → top-k/p → beam search → speculative decoding)
+
+### Phase 3: Training Loop (PyTorch)
+> Combine RL + model knowledge into actual training code.
+
+8. **Cat 09** — Torch RL Training (PPO/GAE/KL/GRPO re-implemented with autograd)
+9. **Cat 17** — Training Loop Patterns (LR scheduler, gradient clipping, SFT, DPO)
+10. **Cat 19** — Optimizers & Tokenization (AdamW, BPE, ZeRO, constrained decoding)
+
+### Phase 4: Scale & Efficiency
+> Make training work on large models across multiple GPUs.
+
+11. **Cat 14** — Memory & Efficiency (gradient checkpointing, mixed precision, FLOPs)
+12. **Cat 12** — Distributed Primitives (all-reduce, tensor parallel, pipeline schedule)
+13. **Cat 04** — Distributed Training (GPU placement, weight sharding, async scheduling)
+14. **Cat 05** — Rollout Pipeline (data sources, replay buffers, filters, best-of-N)
+15. **Cat 06** — Metrics & Logging (pass@k, training tracker, repetition detection)
+
+### Phase 5: Advanced Topics
+> Specialized knowledge for production LLM systems.
+
+16. **Cat 13** — Weight Conversion (QKV split, LoRA merge, name mapping)
+17. **Cat 15** — Evaluation & Benchmarks (perplexity, calibration, exact match)
+18. **Cat 16** — MoE & Routing (top-k routing, load balancing, expert dispatch)
+19. **Cat 18** — RLHF & Alignment (Bradley-Terry, RLOO, IPO, KTO, ELO)
+20. **Cat 20** — Inference & Serving (paged attention, INT8 quantization, ALiBi, MTP)
+
 ## Getting Started
 
 ```bash
